@@ -68,9 +68,9 @@ ATT\&CK Navigator 4.0 版在应用程序的单个实例中支持所有 ATT\&CK �
 #### 编译在别处使用
 
 1. 在 nav-app 目录中运行 ng build
-2. Copy files from `nav-app/dist/` directory
+2. 从 nav-app/dist/ 目录复制文件
 
-_Note: `ng build --prod` does not currently work for ATT\&CK Navigator without additional flags. To build the production environment instead use `ng build --prod --aot=false --build-optimizer=false`._
+注意： ng build --prod 目前不适用于没有附加标志的 ATT\&CK Navigator。要构建生产环境，请改用 ng build --prod --aot=false --build-optimizer=false。
 
 **Running the Navigator offline**
 
