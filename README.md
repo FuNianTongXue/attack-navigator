@@ -6,32 +6,32 @@ description: Att&CK威胁工具
 
 ### ATT\&CK® Navigator
 
-The ATT\&CK Navigator is designed to provide basic navigation and annotation of [ATT\&CK](https://attack.mitre.org) matrices, something that people are already doing today in tools like Excel. We've designed it to be simple and generic - you can use the Navigator to visualize your defensive coverage, your red/blue team planning, the frequency of detected techniques or anything else you want to do. The Navigator doesn't care - it just allows you to manipulate the cells in the matrix (color coding, adding a comment, assigning a numerical value, etc.). We thought having a simple tool that everyone could use to visualize the matrix would help make it easy to use ATT\&CK.
+ATT\&CK Navigator 旨在提供 ATT\&CK 矩阵的基本导航和注释，如今人们已经在 Excel 等工具中执行了这些操作。我们将其设计得简单而通用——您可以使用导航器来可视化您的防守覆盖范围、您的红/蓝团队计划、检测到的技术的频率或您想做的任何其他事情。导航器不在乎 - 它只允许您操作矩阵中的单元格（颜色编码、添加注释、分配数值等）。我们认为拥有一个每个人都可以用来可视化矩阵的简单工具将有助于简化 ATT\&CK 的使用。
 
-The principal feature of the Navigator is the ability for users to define layers - custom views of the ATT\&CK knowledge base - e.g. showing just those techniques for a particular platform or highlighting techniques a specific adversary has been known to use. Layers can be created interactively within the Navigator or generated programmatically and then visualized via the Navigator.
+Navigator 的主要功能是让用户能够定义层 - ATT\&CK 知识库的自定义视图 - 例如，仅显示特定平台的那些技术或突出显示特定对手已知使用的技术。图层可以在导航器中交互创建或以编程方式生成，然后通过导航器进行可视化。
 
-### Usage
+### 用法
 
-The ATT\&CK Navigator is hosted live via GitHub Pages. [You can find a live instance of the current version of the Navigator here](https://mitre-attack.github.io/attack-navigator). You can read more about how to use the application itself in the USAGE document (which is mirrored in the in-app help page).
+ATT\&CK 导航器通过 GitHub 页面实时托管。您可以在此处找到当前版本的 Navigator 的实时实例。您可以在使用文档（反映在应用程序内帮助页面中）中阅读有关如何使用应用程序本身的更多信息。
 
-Version 4.0 of the ATT\&CK Navigator supports all ATT\&CK domains in a single instance of the application instead of requiring a different instance for each domain. It also sees the introduction of support for the ICS domain. See the changelog for more information.
+ATT\&CK Navigator 4.0 版在应用程序的单个实例中支持所有 ATT\&CK 域，而不需要为每个域使用不同的实例。它还看到了对 ICS 域的支持的引入。有关更多信息，请参阅变更日志。
 
-Additionally, older versions of ATT\&CK can now be loaded in the application. The ATT\&CK Navigator supports ATT\&CK versions 8, 7, 6, 5, and 4. Older versions do not work in the application since their data model is too outdated.
+此外，现在可以在应用程序中加载旧版本的 ATT\&CK。 ATT\&CK Navigator 支持 ATT\&CK 版本 8、7、6、5 和 4。旧版本在应用程序中不起作用，因为它们的数据模型太过时了。
 
-Previous versions of the Navigator application are also hosted via GitHub Pages for users who want a more classic experience:
+以前版本的 Navigator 应用程序也通过 GitHub Pages 为想要更经典体验的用户托管：
 
 | ATT\&CK Version                                              | Navigator Version                                                                        | Domains                                                                      |                                                                      |
 | ------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------- |
 | [ATT\&CK v7.2](https://attack.mitre.org/resources/versions/) | [Navigator v3.1](https://github.com/mitre-attack/attack-navigator/releases/tag/v3.1)     | [Enterprise](https://mitre-attack.github.io/attack-navigator/v3/enterprise/) | [Mobile](https://mitre-attack.github.io/attack-navigator/v3/mobile/) |
 | [ATT\&CK v6.3](https://attack.mitre.org/resources/versions/) | [Navigator v2.3.2](https://github.com/mitre-attack/attack-navigator/releases/tag/v2.3.2) | [Enterprise](https://mitre-attack.github.io/attack-navigator/v2/enterprise/) | [Mobile](https://mitre-attack.github.io/attack-navigator/v2/mobile/) |
 
-Please see [Install and Run](broken-reference) for information on how to get the ATT\&CK Navigator set up locally.
+有关如何在本地设置 ATT\&CK Navigator 的信息，请参阅安装和运行。
 
-**Important Note:** Layer files uploaded when visiting our Navigator instance hosted on GitHub Pages are **NOT** being stored on the server side, as the Navigator is a client-side only application. However, we still recommend installing and running your own instance of the ATT\&CK Navigator if your layer files contain any sensitive content.
+重要说明：访问托管在 GitHub 页面上的 Navigator 实例时上传的层文件不会存储在服务器端，因为 Navigator 是仅客户端应用程序。但是，如果您的图层文件包含任何敏感内容，我们仍然建议安装和运行您自己的 ATT\&CK Navigator 实例。
 
-Use our [GitHub Issue Tracker](https://github.com/mitre-attack/attack-navigator/issues) to let us know of any bugs or others issues that you encounter. We also encourage pull requests if you've extended the Navigator in a cool way and want to share back to the community!
+使用我们的 GitHub 问题跟踪器让我们知道您遇到的任何错误或其他问题。如果您以一种很酷的方式扩展了导航器并希望与社区分享，我们也鼓励拉取请求！
 
-_See_ [_CONTRIBUTING.md_](https://github.com/mitre-attack/attack-navigator/blob/master/CONTRIBUTING.md) _for more information on making contributions to the ATT\&CK Navigator._
+有关为 ATT\&CK 导航器做出贡献的更多信息，请参阅 CONTRIBUTING.md。
 
 ### Requirements
 
