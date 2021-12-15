@@ -1,219 +1,310 @@
-# ATT&CK® Navigator
+# 变更日志
 
-The ATT&CK Navigator is designed to provide basic navigation and annotation of [ATT&CK](https://attack.mitre.org) matrices, something that people are already doing today in tools like Excel.  We've designed it to be simple and generic - you can use the Navigator to visualize your defensive coverage, your red/blue team planning, the frequency of detected techniques or anything else you want to do.  The Navigator doesn't care - it just allows you to manipulate the cells in the matrix (color coding, adding a comment, assigning a numerical value, etc.).  We thought having a simple tool that everyone could use to visualize the matrix would help make it easy to use ATT&CK.
+### 发展阶段的变化
 
-The principal feature of the Navigator is the ability for users to define layers - custom views of the ATT&CK knowledge base - e.g. showing just those techniques for a particular platform or highlighting techniques a specific adversary has been known to use. Layers can be created interactively within the Navigator or generated programmatically and then visualized via the Navigator.
+### 改进
 
-## Usage
+#### 次要的
 
-The ATT&CK Navigator is hosted live via GitHub Pages. You can find a live instance of the current version of the Navigator here:
-- [Enterprise ATT&CK](https://mitre-attack.github.io/attack-navigator/enterprise/)
-- [Mobile ATT&CK](https://mitre-attack.github.io/attack-navigator/mobile/)
+* 允许在 SVG 导出器的图例块中分别隐藏图例和渐变。查看拉取请求 [#223](https://github.com/mitre-attack/attack-navigator/pull/223).
 
-Users seeking to continue using [ATT&CK v6.3](https://attack.mitre.org/resources/versions/) (the last release before sub-techniques) can find live instances of [Navigator v2.3.2](https://github.com/mitre-attack/attack-navigator/releases/tag/v2.3.2) here:
-- [Enterprise ATT&CK v6.3](https://mitre-attack.github.io/attack-navigator/v2/enterprise/)
-- [Mobile ATT&CK v6.3](https://mitre-attack.github.io/attack-navigator/v2/mobile/)
+### Fixes
 
+* SVG exporter now honors layer sorting configuration. See pull request [#223](https://github.com/mitre-attack/attack-navigator/pull/223).
 
-Please see [Install and Run](#Install-and-Run) for information on how to get the ATT&CK Navigator set up locally. Also see [Enterprise and Mobile Domains](#Enterprise-and-Mobile-Domains) below for information on how to set up the ATT&CK Navigator on local instances to use the two different domains.
+## v3.1 - 8 July 2020
 
-**Important Note:** Layer files uploaded when visiting our Navigator instance hosted on GitHub Pages are **NOT** being stored on the server side, as the Navigator is a client-side only application. However, we still recommend installing and running your own instance of the ATT&CK Navigator if your layer files contain any sensitive content.
+ATT\&CK Navigator v3.0 and v3.1 includes support for sub-techniques as well as improvements to several of the interfaces and a major refactor of the codebase. The format for the config file and layer file have both changed: please see _Layer File Format Changes_ and _Config File Format Changes_ below for more details.
 
-Use our [GitHub Issue Tracker](https://github.com/mitre-attack/attack-navigator/issues) to let us know of any bugs or others issues that you encounter. We also encourage pull requests if you've extended the Navigator in a cool way and want to share back to the community!
+If you want to continue using the non-sub-techniques Navigator, please use the [v2.3.2 release](https://github.com/mitre-attack/attack-navigator/releases/tag/v2.3.2) for local instances or the following live instances of Navigator v2.3.2:
 
-*See [CONTRIBUTING.md](https://github.com/mitre-attack/attack-navigator/blob/master/CONTRIBUTING.md) for more information on making contributions to the ATT&CK Navigator.*
+* [Enterprise ATT\&CK](https://mitre-attack.github.io/attack-navigator/v2/enterprise/)
+* [Mobile ATT\&CK](https://mitre-attack.github.io/attack-navigator/v2/mobile/)
 
-## Requirements
-* [Node.js](https://nodejs.org) version 8 or greater
-* [AngularCLI](https://cli.angular.io)
+### Improvements
 
-## Supported Browsers
-* Chrome
-* Firefox
-* Internet Explorer<sup>1</sup>
-* Safari<sup>2</sup>
-* Edge
-* Opera
+#### Minor
 
-<sup>1</sup> There is a recorded issue with the SVG export feature on Internet Explorer. Because of a [missing functionality on SVGElements](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/children) in that browser, text will not be properly vertically centered in SVGs exported in that browser. We recommend switching to a more modern browser for optimal results.
-<sup>2</sup> There is a recorded issue with using the **ATT&CK Navigator** on Safari. If the user reloads the page but cancels the action when prompted, the refresh icon in the browser window remains in the `cancel reload` state. This is believed to be an issue with Safari and not with the application.
+* Added options to the SVG Export feature for the visibility of sub-techniques. See issue [#142](https://github.com/mitre-attack/attack-navigator/issues/142).
+* Added update layers for March 2020 sub-techniques release. See issue [#138](https://github.com/mitre-attack/attack-navigator/issues/138).
+* Updated the [sample layers](layers/data/samples/) with sub-techniques support. See issue [#138](https://github.com/mitre-attack/attack-navigator/issues/138). We've also released [some scripts on our attack-scripts repository](https://github.com/mitre-attack/attack-scripts/tree/develop/scripts/layers/samples) corresponding to the sample layers.
+* Extended search interface to support searching for techniques based on data sources. See pull request [#158](https://github.com/mitre-attack/attack-navigator/pull/158).
+* Added show/hide all sub-techniques controls under "layer controls". See issue [#141](https://github.com/mitre-attack/attack-navigator/issues/141).
+* Updated the "select sub-techniques with parent" control under the "selection controls" dropdown. Sub-techniques will be selected independently by default. See issue [#140](https://github.com/mitre-attack/attack-navigator/issues/140).
+* Added sub-techniques as a configurable Navigator feature. Sub-technique features can be disabled by editing the `src/assets/config.json` file or using the "create customized Navigator" interface. See issue [#112](https://github.com/mitre-attack/attack-navigator/issues/112).
+* Added option to select scoring gradient from an existing layer in the _create layers from other layers_ interface. See issue [#121](https://github.com/mitre-attack/attack-navigator/issues/121).
+* Added options to select all techniques and sub-techniques with or without annotations in the context menu. See issue [#163](https://github.com/mitre-attack/attack-navigator/issues/163).
+* Added a subscript to the techniques which have sub-techniques. The subscript shows the number of sub-techniques under a given technique and how many of those sub-techniques have annotations while the parent is collapsed. See issue [#162](https://github.com/mitre-attack/attack-navigator/issues/162).
+* Updated the layout of the metadata value key. See issue [#189](https://github.com/mitre-attack/attack-navigator/issues/189).
 
-## Install and Run
-#### First time
-1. Navigate to the **nav-app** directory
-2. Run `npm install`
+### Fixes
 
-#### Serve application on local machine
-1. Run `ng serve` within the **nav-app** directory
-2. Navigate to `localhost:4200` in browser
+* Added internet explorer support for the sub-techniques features, and improved Edge compatibility. See issue [#135](https://github.com/mitre-attack/attack-navigator/issues/135).
+* Fixes a bug causing metadata values to be displayed improperly in tooltips. See issue [#153](https://github.com/mitre-attack/attack-navigator/issues/153).
+* Fixes a bug in which the default layer link input field in the "create customized Navigator" interface loses focus between characters. See issue [#136](https://github.com/mitre-attack/attack-navigator/issues/136).
+* Fixed a bug in "create layer from other layers" interface where inheriting filters would cause the application to crash. See issue [#168](https://github.com/mitre-attack/attack-navigator/issues/168).
+* Fixed a bug where editing the gradient would also change the most recently selected gradient preset. See issue [#167](https://github.com/mitre-attack/attack-navigator/issues/167).
+* Removed duplicate threat group entries from the multiselect interface and included sub-techniques in the selection of techniques related to threat groups, software, or mitigations. See issue [#164](https://github.com/mitre-attack/attack-navigator/issues/164).
+* Fixed a bug in the sub-technique sidebar that occurs when all sub-techniques of a given technique are disabled and hidden. See issue [#177](https://github.com/mitre-attack/attack-navigator/issues/177).
+* Removed the comment underscore from the sub-technique count subscript. See issue [#184](https://github.com/mitre-attack/attack-navigator/issues/184).
 
-#### Compile for use elsewhere
-1. Run `ng build` within the **nav-app** directory
-2. Copy files from `nav-app/dist/` directory
+## v3.0 - sub-techniques beta
 
-#### Running the Navigator offline
-1. Install the Navigator as per instructions above.
-2. Follow instructions under [loading content from local files](#Loading-content-from-local-files) to configure the Navigator to populate the matrix without an internet connection. For enterprise-attack, use [this file](https://raw.githubusercontent.com/mitre/cti/master/enterprise-attack/enterprise-attack.json). For mobile-attack, use [this file](https://raw.githubusercontent.com/mitre/cti/master/mobile-attack/mobile-attack.json). For pre-attack, use [this file](https://raw.githubusercontent.com/mitre/cti/master/pre-attack/pre-attack.json).
+### New Features
 
-#### Common issues
-1. If serving or compiling the application gives the warning `Module not found: can't resolve 'fs'`, run the command `npm run postinstall`. The postinstall step usually runs automatically after `npm install` to patch the `fs` issue, but in some environments it must be run manually.
+#### Major
 
-## Documentation
-When viewing the app in a browser, click on the **?** icon to the right of the **ATT&CK® Navigator** title to view its documentation.
+* Added support for sub-techniques. Techniques with sub-techniques will be denoted by a sidebar which can be clicked to show and hide the sub-techniques. Techniques without sub-techniques will not have a sidebar.
+* Added "select techniques with subtechniques" control under "selection controls" dropdown, augmenting the existing "select techniques across tactics" control. By default sub-techniques will be selected along with their parents. See issue [#114](https://github.com/mitre-attack/attack-navigator/issues/114).
+* Added "matrix layout" controls (replacing "view mode"). See issues [#117](https://github.com/mitre-attack/attack-navigator/issues/117) and [#110](https://github.com/mitre-attack/attack-navigator/issues/110).
+  * Supports multiple layouts, and the codebase is designed to allow the addition of new layouts easily. Added the following layouts:
+    * the "side" layout (default), where sub-techniques appear in an adjacent sub-column of the tactic.
+    * the "flat" layout, where sub-techniques appear nested beneath their parent similar to an indented list.
+    * the "mini" layout, where sub-techniques are grouped into boxes with their parent. The "mini" layout is designed to give an overview of the layer without the comparatively complex structure of the "flat" or "side" views.
+  * Added the ability to show technique ATT\&CK IDs and names simultaneously, individually or not at all. The "mini" layout overrides this selection. See issue [#124](https://github.com/mitre-attack/attack-navigator/issues/124).
 
-## Enterprise and Mobile Domains
-By default, the ATT&CK Navigator will generate a matrix view of the tactics and techniques matrix for the [Enterprise ATT&CK](https://attack.mitre.org) technology domain knowledge base. All tactics and techniques in this domain are contained within the *act* stage, which is also pre-selected by default.
+#### Minor
 
-To instead generate a matrix view of the [Mobile ATT&CK](https://attack.mitre.org/matrices/mobile/) technology domain knowledge base, change the `domain` value in `nav-app/src/assets/config.json` to `mitre-mobile`. **Use Device Access** and **Network-Based Effects** tactics and techniques in this domain are contained within the *act* stage, which is pre-selected by default. **Obtain Device Access** tactics and techniques are contained within the *prepare* stage, which can be manually selected.
+* Added mitigations to multi-select interface. Improved the extensibility of the multi-select interface to make future additions easier. See issue [#119](https://github.com/mitre-attack/attack-navigator/issues/119).
 
-[PRE-ATT&CK](https://attack.mitre.org/matrices/pre/) is included in the matrix view for either domain if the *prepare* stage is manually selected within the layer control filters.
+### Improvements
 
-## Layers Folder
-The **layers** folder contains specifications for the layer format as well as example layers and a script demonstrating programatic layer generation. We will continue to add content to this repository as new scripts are implemented. Also, feel free to create pull requests if you want to add new capabilities here!
+#### Major
 
-More information on how layers are used and developed can be found in the ATT&CK Navigator documentation that can be viewed by clicking **?** when running the app in a browser, and in the README in the **layers** folder.
+* Major redesign of the "render layer to SVG" feature.
+  * Added support for sub-techniques. See issue [#116](https://github.com/mitre-attack/attack-navigator/issues/116).
+  * Users will no longer need to specify text size manually. Algorithms have been implemented to automatically maximize text size without overflowing the text container. The overall layer rendering process will take slightly longer than previously due to these computations.
+  * Header and legend (docked and undocked) should be much more aesthetic.
+  * Score gradient legend should now show which scores map to which colors more clearly.
+* Context menu and tooltip improvements:
+  * Visual style has been improved for both context menu and tooltip.
+  * Tooltip is now statically placed instead of following the cursor, which increases the performance of the UI.
+  * Context menu should now orient itself better to avoid falling off the edge of the screen.
+  * Added "view tactic" button to context menu.
+  * Major improvements to the flexibility of the custom context menu items feature. See _Config File Format Changes_ below for more details.
+* Major refactor to many components should reduce lag and improve extensibility and maintainability of the application.
 
-## Adding Custom Context Menu Options
-To create custom options to the **ATT&CK® Navigator** context menu using data in the Navigator, objects must be added to the array labeled `custom_context_menu_options` in `nav-app/src/assets/config.json`. Each object must have a property **label**, which is the text displayed in the context menu, and a property **url**, which is where the user is navigated.
+#### Minor
 
-To utilize data on right-clicked technique in the url, parameters surrounded by double curly brackets can be added to the string. For example: using `http://www.someurl.com/{{technique_attackID}}}` as the url in the custom option would lead to `http://www.someurl.com/T1098`, if the right-clicked technique's attackID was T1098.
+* Export to excel: added sub-techniques support. See issue [#115](https://github.com/mitre-attack/attack-navigator/issues/115).
+* Minor UI improvements to the search feature. Disabled regex in search because it was very buggy. See issue [#113](https://github.com/mitre-attack/attack-navigator/issues/113).
 
-The following data substitutions will be parsed:
-* `{{technique_attackID}}` will be substituted with the ATT&CK ID of the technique, e.g `T1234`
-* `{{technique_stixID}}` will be substituted with the STIX ID of the technique, e.g `attack-pattern--12345678-1234-1234-1234-123456789123`
-* `{{technique_name}}` will be substituted with the technique name in lower case and with spaces replaced with hyphens, e.g `example-technique-name`
-* `{{tactic_attackID}}` will be substituted with the ATT&CK ID of the tactic, e.g `TA1234`
-* `{{tactic_stixID}}` will be substituted with the STIX ID of the tactic, e.g `x-mitre-tactic--12345678-1234-1234-1234-123456789123`
-* `{{tactic_name}}` will be substituted with the tactic name in lower case and with spaces replaced with hyphens, e.g `example-tactic`. This is also equivalent to the x_mitre_shortname property of the tactic.
+### Layer File Format Changes
 
-Optionally, a `subtechnique_url` field may be added to a custom option. This field will be parsed when the option is used on a sub-technique instead of the normal URL, which will be used for techniques. If `subtechnique_url` is not used, the `technique_` substitutions defined above will refer to the sub-technique object itself.
+Layer file format updated to version 3.0. Older versions can still be loaded in the Navigator, but may have degraded functionality.
 
-The following substitutions will be parsed for sub-techniques:
-* `{{parent_technique_attackID}}` will be substituted with the ATT&CK ID of the sub-technique's parent, e.g `T1234`
-* `{{parent_technique_stixID}}` will be substituted with the STIX ID of the sub-technique's parent, e.g `attack-pattern--12345678-1234-1234-1234-123456789123`
-* `{{parent_technique_name}}` will be substituted with the name of the sub-technique's parent in lower case and with spaces replaced with hyphens, e.g `example-technique-name`
-* `{{subtechnique_attackID}}` will be substituted with the ATT&CK ID of the sub-technique, e.g `T1234.001`
-* `{{subtechnique_attackID_suffix}}` will be substituted with the portion of the ATT&CK ID of the sub-technique after the delimiting period, e.g `001`
-* `{{subtechnique_stixID}}` will be substituted with the STIX ID of the sub-technique, e.g `attack-pattern--98765432-9876-9876-9876-987654321987`
-* `{{subtechnique_name}}` will be substituted with the sub-technique name in lower case and with spaces replaced with hyphens, e.g `example-subtechnique-name`
-* `{{tactic_attackID}}` will be substituted with the ATT&CK ID of the tactic, e.g `TA1234`
-* `{{tactic_stixID}}` will be substituted with the STIX ID of the tactic, e.g `x-mitre-tactic--12345678-1234-1234-1234-123456789123`
-* `{{tactic_name}}` will be substituted with the tactic name in lower case and with spaces replaced with hyphens, e.g `example-tactic`. This is also equivalent to the x_mitre_shortname property of the tactic.
+* Removed "viewMode" enumeration in favor of "layout" object. viewMode will get parsed into a layout configuration automatically, but the conversion is not perfect since the layouts have changed.
+* Added "showSubtechniques" field to technique objects.
+* Added "selectSubtechniquesWithParent" field setting the default value of the "select techniques with subtechniques" control.
 
-Example custom context menu objects:
+The sub-techniques update of ATT\&CK caused many techniques to be replaced by sub-techniques. Since the replacing sub-techniques have different IDs, many layers created before the sub-technques release will still be using IDs for the replaced techniques and therefore won't work properly in the new version even if the annotation format is correct. A [conversion script](layers/update-layers.py) is provided in the layers folder which both updates layers to the most recent format and also updates technique IDs to their replacers where possible. There are however a few cases which won't be caught:
+
+1. Cases where techniques which have been replaced by multiple sub-techniques are ignored entirely due to limitations in the remapping data.
+2. Cases where the `tactic` field was present but the replacing technique is not in that tactic. Run `python3 update-layers.py -h` for usage instructions.
+
+### Config File Format Changes
+
+#### Changes to `custom_context_menu_items`
+
+Custom context menu feature has been significantly improved for flexibility. See _Adding Custom Context Menu Options_ in [the readme](<README (1).md>) for more details on the format.
+
+* Updated substitution string to use double curly braces (e.g `{{technique_name}}`) instead of tildes.
+* Added ability to specify STIX IDs in addition to ATT\&CK IDs.
+* Added the option to add a sub-technique specific URL (`subtechnique_url`) which will apply only to sub-techniques. When using the sub-technique URL, extra sub-technique related substitutions are available.
+
+#### Changes to `features`
+
+The "features" structure is used to enable/disable specific Navigator features. It also propagates to the "create customized Navigator" interface.
+
+* "toggle\_view\_mode" has been renamed to "layout\_controls" and the description updated accordingly.
+
+## v2.3.2 - 17 January 2020
+
+### Improvements
+
+* Updated trademark to registered trademark and updated copyright date to 2020. See issue [#125](https://github.com/mitre-attack/attack-navigator/pull/125).
+* Updated help page to be more legible by increasing page margins.
+
+## v2.3.1 - 29 October 2019
+
+### Fixes
+
+* Fixes a bug where default\_layers specified in `config.json` would not load. See pull request [#109](https://github.com/mitre-attack/attack-navigator/pull/109).
+
+## v2.3 - 24 October 2019
+
+### New Features
+
+#### Minor
+
+* Technique comments will now be included with excel exports as cell notes. Note: you may have to re-install your node modules for this functionality to be present. See issue [#55](https://github.com/mitre-attack/attack-navigator/issues/55).
+* Minor matrix layout improvements. See issue [#106](https://github.com/mitre-attack/attack-navigator/issues/106).
+* Added support for cloud platforms. See issue [#101](https://github.com/mitre-attack/attack-navigator/issues/101). Also see _Layer File Format Changes_, below.
+* In layer-layer operations, score expressions are now calculated on an element-by-element basis. This allows the use of normal math operators (e.g `a * b`) instead of the elementwise operators (e.g `a .* b`) as were previously required. It also enables the use of ternary operations such as `a > b ? a : 0`. See issue [#81](https://github.com/mitre-attack/attack-navigator/issues/81).
+* Added the ability to specify multiple default layers in the layerURL query param. See issue [#75](https://github.com/mitre-attack/attack-navigator/issues/75).
+
+### Fixes
+
+* Multiselect interface should now correctly sort software and groups which start with lowercase letters. See issue [#99](https://github.com/mitre-attack/attack-navigator/issues/99).
+* Layer loading should now provide more accurate descriptions when errors are encountered. See issue [#103](https://github.com/mitre-attack/attack-navigator/issues/103).
+* Updated packages to fix vulnerabilities.
+
+### Layer File Format Changes
+
+Layer file format updated to version 2.2. Older versions can still be loaded in the Navigator, and this update is fully backwards compatible with Version 2.1. See [layers/LAYERFORMATv2\_2md](layers/LAYERFORMATv2\_2.md) for the full v2.2 specification.
+
+* Added the following cloud platforms to the set of acceptable enterprise platforms: "AWS", "GCP", "Azure", "Azure AD", "Office 365", "SaaS".
+* Updated Enterprise and Mobile platforms to match their format as seen elsewhere in ATT\&CK. This change is fully backwards compatible, and if the old format is detected it will automatically be updated to the new format.
+  * "android" becomes "Android"
+  * "ios" becomes "iOS"
+  * "windows" becomes "Windows"
+  * "linux" becomes "Linux"
+  * "mac" becomes "macOS"
+
+## v2.2.1 - 5 June 2019
+
+### Fixes
+
+* Updated Angular from 7.0.4 to 8.0.0.
+* Updated other packages to fix vulnerabilities.
+* Removed node-sass rebuild in dockerfile.
+* Fixed improperly formatted domains in the April 2019 update layers which were causing issues when exporting those layers to excel.
+* Updated readme to better highlight documentation for using the Navigator offline. See issue [#82](https://github.com/mitre-attack/attack-navigator/issues/82).
+
+## v2.2 - 11 December 2018
+
+### New Features
+
+#### Major
+
+* Added the ability to associate user defined metadata to layers and techniques inside of a layer. Metadata can be useful for supporting other applications that use the layer format, or for attaching additional descriptive fields to the layer. The UI supports editing metadata on the layer itself, but not on techniques. Metadata on techniques is shown in tooltips. See _Layer File Format Changes_, below, for more detail on the metadata format. Also see issue [#52](https://github.com/mitre-attack/attack-navigator/issues/22).
+* Removed `assets/tacticsData.json`. The Navigator now populates its tactics data from `x-mitre-matrix` and `x-mitre-tactic` objects in the bundled data. The field `tactics_url` was removed from `assets/config.json` -- see _Changes to config.json Format_, below. See issue [#63](https://github.com/mitre-attack/attack-navigator/issues/63).
+
+#### Minor
+
+* Multiple layers can now be loaded on initialization. A change to the `config.json` file format allows the user to specify a list of default layers. Default layers can be loaded from the assets directory or from the web. see _Changes to config.json Format_, below. Also see issue [#67](https://github.com/mitre-attack/attack-navigator/issues/67).
+* The color of the underline denoting comments can now be configured in the `config.json` file. Setting the color to `"transparent"` will remove comment underlines altogether. See \*Changes to config.json Format\`, below. Also see issue [#53](https://github.com/mitre-attack/attack-navigator/issues/53).
+
+### Fixes
+
+* Updated links in the documentation to match the new ATT\&CK website. See issue [#62](https://github.com/mitre-attack/attack-navigator/issues/62).
+* Updated Angular to version 7.0.6. This fixes some installation issues with OSX. We also updated several other packages. Please note that our new version of Angular requires a newer nodejs version, so try updating your node installation if errors occur after updating the Navigator. See issues [#61](https://github.com/mitre-attack/attack-navigator/issues/61), [#70](https://github.com/mitre-attack/attack-navigator/issues/70).
+* Merged a [pull request](https://github.com/mitre-attack/attack-navigator/pull/58) which fixed a bug where default layers would have placeholder layer titles. See [#54](https://github.com/mitre-attack/attack-navigator/issues/64).
+* Negative scores can now be entered in the UI. See [#72](https://github.com/mitre-attack/attack-navigator/issues/72).
+
+### Changes to `config.json` Format
+
+#### Default Layer
+
+`default_layer` has been renamed to `default_layers`. The string property `location` has been replaced with the string\[] property `urls`. The strings in `urls` should be the paths to the default layers you wish to load -- now multiple default layers can be loaded. You can also now load default layers from the assets folder and from the web simultaneously, although the order of the tabs is not guaranteed (since layer loading over HTTP is asynchronous).
+
+To update previous default layers configuration to the new format, see the following example:
+
 ```json
-{
-    "label": "view technique on ATT&CK website",
-    "url": "https://attack.mitre.org/techniques/{{technique_attackID}}",
-    "subtechnique_url": "https://attack.mitre.org/techniques/{{parent_technique_attackID}}/{{subtechnique_attackID_suffix}}"
+"default_layer": {
+    "enabled": true,
+    "location": "assets/example.json"
 }
 ```
+
+Becomes:
+
 ```json
-{
-    "label": "view tactic on ATT&CK website",
-    "url": "https://attack.mitre.org/tactics/{{tactic_attackID}}"
+"default_layers": {
+    "enabled": true,
+    "urls": [
+        "assets/example.json"
+    ]
 }
 ```
 
-## Loading content from a TAXII server
-*By default, the Navigator loads content from the MITRE CTI TAXII server at https://cti-taxii.mitre.org.*
-1. Edit the `config.json` file in the **nav-app/src/assets** directory
-2. Set the `enabled` property in `taxii_server` to **true**
-3. Set the `url` property in `taxii_server` to your server's URL
-4. Set the values of the `collections` dictionary to the collection UUIDs your TAXII server has set
+#### Comment Color
 
-## Loading content from local files
-*It's possible to populate the the Navigator using files that consist of bundles of STIX objects, similarly to [this](https://raw.githubusercontent.com/mitre/cti/master/enterprise-attack/enterprise-attack.json) file.*
-1. Put the stix bundles in `src/assets`. This will tell the server hosting the Navigator to host the data as well.
-2. Configure the navigator to use these files. In `src/assets/config.json`:
-    1.  Change `enterprise_attack_url` to the path to the enterprise-attack bundle (e.g `assets/enterprise-attack.json`).
-    2. Change `mobile_attack_url` to the path to the mobile-attack bundle (e.g `assets/mobile-attack.json`).
-    3. Change `pre_attack_url` to the path to the pre-attack bundle (e.g `assets/pre-attack.json`).
-    4. Change `taxii_server.enabled` to false.
+The `comment_color` field has been added, which specifies the color for comment underlines.
 
-## Running the Docker File
-1. Navigate to the **nav-app** directory
-2. Run `docker build -t yourcustomname .`
-3. Run `docker run -p 4200:4200 yourcustomname`
-4. Navigate to `localhost:4200` in browser
+#### Removal of `assets/tacticsData.json` and `tactics_url`
 
-## Loading Default Layers Upon Initialization
-The Navigator can be configured so as to load a set of layers upon initialization. These layers can be from the web and/or from local files. 
-Local files to load should be placed in the `nav-app/src/assets/` directory.
-1. Set the `enabled` property in `default_layers` in `src/assets/config.json` to `true`
-2. Add the paths to your desired default layers to the `urls` array in `default_layers`. For example,
-   ```JSON
-   "default_layers": {
-        "enabled": true,
-        "urls": [
-            "assets/example.json", 
-            "https://raw.githubusercontent.com/mitre-attack/attack-navigator/master/layers/data/samples/Bear_APT.json"
-        ]
-    }
-   ```
-   would load `example.json` from the local assets directory, and `Bear_APT.json` from this repo's sample layer folder on Github.
-3. Load/reload the Navigator
+`assets/tacticsData.json` was removed, and the `config.json` field `tactics_url` along with it. `tacticsData.json` was previously used to specify the _pre-attack_, _mitre-enterprise_ and _mitre-mobile_ tactics.
 
-Default layers from the web can also be set using a query string in the Navigator URL. Refer to the in-application help page section "Customizing the Navigator" for more details.
+This is now done using the `x-mitre-matrix` and `x-mitre-tactic` objects in the bundled data retrieved from the taxii server or from our static cti github. `x-mitre-matrix` specifies the order of tactics and `x-mitre-tactic` specifies the actual tactic data.
 
-## Disabling Navigator Features
-The `features` array in `nav-app/src/assets/config.json` lists Navigator features you may want to disable. Setting the `enabled` field on a feature in the configuration file will hide all control
-elements related to that feature.
+If you are using your own dataset with the Navigator an update to your source data will be required. The ATT\&CK Navigator uses bundled data, where objects with types `attack-pattern`, `intrusion-set`, `malware`, `tool`, `relationship`, `x-mitre-tactic`, and `x-mitre-matrix` are all stored in a single array. This array is now required to contain `x-mitre-tactic` and `x-mitre-matrix` objects, which were not previously used.
 
-However, if a layer is uploaded with an annotation or configuration
-relating to that feature it will not be hidden. For example, if `comments` are disabled the
-ability to add a new comment annotation will be removed, however if a layer is uploaded with
-comments present they will still be displayed in tooltips and and marked with an underline.
+The data retrieved from `enterprise_attack_url`, `pre_attack_url`, and `mobile_data_url` follow the proper bundle format. Please use them as a guide for how to format your own datasets.
 
-Features can also be disabled using the _create customized Navigator_ feature. Refer to the in-application help page section "Customizing the Navigator" for more details.
+Also, please note that multiple matrices are only supported for `mitre-mobile`, which expects matrices with the names `Device Access` and `Network-Based Effects` so that we can order the tactics in the UI properly.
 
-## Embedding the Navigator in a Webpage
-If you want to embed the Navigator in a webpage, use an iframe:
-```HTML
-<iframe src="https://mitre-attack.github.io/attack-navigator/enterprise/" width="1000" height="500"></iframe>
-```
-If you want to imbed a version of the Navigator with specific features removed (e.g tabs, adding annotations), or with a default layer, we recommend using the _create customized Navigator_ feature. Refer to the in-application help page section "Customizing the Navigator" for more details.
+### Layer File Format Changes
 
-The following is an example iframe which embeds our [*Bear APTs](layers/data/samples/Bear_APT.json) layer with tabs and the ability to add annotations removed:
-```HTML
-<iframe src="https://mitre-attack.github.io/attack-navigator/enterprise/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fmitre%2Fattack-navigator%2Fmaster%2Flayers%2Fdata%2Fsamples%2FBear_APT.json&tabs=false&selecting_techniques=false" width="1000" height="500"></iframe>
-```
+Layer file format updated to version 2.1. This update is fully backwards compatible with layer format v2.0 since all the added fields are optional. See [layers/LAYERFORMATv2\_1.md](layers/LAYERFORMATv2\_1.md) for the full v2.1 specification.
 
-## Related MITRE Work
-#### CTI
-[Cyber Threat Intelligence repository](https://github.com/mitre/cti) of the ATT&CK catalog expressed in STIX 2.0 JSON.
+This update constitutes the addition of `metadata` fields to the layer and technique objects. Metadata can be used to support other applications using the layer format, or to add additional descriptive fields to layers or techniques. Metadata is formatted as an array, and each piece of metadata in the array must conform to the schema `{"name": string, "value": string}`.
 
-#### ATT&CK
-ATT&CK® is a curated knowledge base and model for cyber adversary behavior, reflecting the various phases of an adversary’s lifecycle and the platforms they are known to target. ATT&CK is useful for understanding security risk against known adversary behavior, for planning security improvements, and verifying defenses work as expected.
+## v2.1 - 31 July 2018
 
-https://attack.mitre.org
+### New Features
 
-#### STIX
-Structured Threat Information Expression (STIX™) is a language and serialization format used to exchange cyber threat intelligence (CTI).
+#### Major
 
-STIX enables organizations to share CTI with one another in a consistent and machine readable manner, allowing security communities to better understand what computer-based attacks they are most likely to see and to anticipate and/or respond to those attacks faster and more effectively.
+* Added export to MS Excel feature. Saves the current layer to MS excel (_xlsx_) format. See issue [#52](https://github.com/mitre-attack/attack-navigator/issues/52).
 
-STIX is designed to improve many different capabilities, such as collaborative threat analysis, automated threat exchange, automated detection and response, and more.
+#### Minor
 
-https://oasis-open.github.io/cti-documentation/
+* In the export to SVG interface you can now hide the technique count in the tactic column headers. See issue [#47](https://github.com/mitre-attack/attack-navigator/issues/47).
+* Updated the README to explain how to use local files to populate the Navigator. See issue [#51](https://github.com/mitre-attack/attack-navigator/issues/51).
 
-## Notice
-Copyright 2020 The MITRE Corporation
+### Fixes
 
-Approved for Public Release; Distribution Unlimited. Case Number 18-0128.
+* Fixed constant score expressions (e.g `10`, `5+5`) featuring no variables being ignored in the _create layers from other layers_ interface. Now if a constant score expression is present it assigns uniformly to all techniques. See issue [#49](https://github.com/mitre-attack/attack-navigator/issues/49).
+* Fixed a bug when uploading layers with no tactic field on techniques. When said field was absent, techniques with `enabled=false` were not initially hidden when `hideDisabled=true`. See issue [#50](https://github.com/mitre-attack/attack-navigator/issues/50).
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+## v2.0 - 14 May 2018
 
-   http://www.apache.org/licenses/LICENSE-2.0
+### New Features
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
+#### Major
 
-This project makes use of ATT&CK®
+* Added TAXII client to pull ATT\&CK content from a TAXII server. By default, the Navigator now loads content from the MITRE CTI TAXII server hosted at [https://cti-taxii.mitre.org](https://cti-taxii.mitre.org). See issue [#4](https://github.com/mitre-attack/attack-navigator/issues/4).
+* Added a new interface to render layers to a downloadable SVG image. See issue [#2](https://github.com/mitre-attack/attack-navigator/issues/2).
+* Added the ability to load a default layer when the Navigator initializes. See issues [#14](https://github.com/mitre-attack/attack-navigator/issues/14), [#26](https://github.com/mitre-attack/attack-navigator/issues/26).
+  * A local default layer can be specified in `src/assets/config.json`.
+  * The URL to a default layer hosted on the web can be specified in the new _create customized Navigator_ interface, and when the navigator loads it will fetch that layer. See issues [#7](https://github.com/mitre-attack/attack-navigator/issues/7), [#20](https://github.com/mitre-attack/attack-navigator/issues/20).
 
-[ATT&CK® Terms of Use](https://attack.mitre.org/resources/terms-of-use/)
+#### Minor
+
+* Added configurable background color to tactics row. See issue [#32](https://github.com/mitre-attack/attack-navigator/issues/32).
+* Added customizable legend to describe the meanings of the colors of annotated techniques. See issues [#24](https://github.com/mitre-attack/attack-navigator/issues/24), [#28](https://github.com/mitre-attack/attack-navigator/issues/28), [#31](https://github.com/mitre-attack/attack-navigator/issues/31), [#33](https://github.com/mitre-attack/attack-navigator/issues/33).
+* Added the ability to disable navigator features, either by editing the `src/assets/config.json` or using the new _create customized Navigator_ interface. See issues [#21](https://github.com/mitre-attack/attack-navigator/issues/21), [#41](https://github.com/mitre-attack/attack-navigator/issues/41).
+* Added the ability to specify new items in the technique context menu by editing `src/assets/config.json`. These new items can be used to hyperlink to a specified URL, with parameters for the technique ID or tactic. See issue [#9](https://github.com/mitre-attack/attack-navigator/issues/9).
+* Added a button to remove all annotations on the currently selected techniques. See issue [#12](https://github.com/mitre-attack/attack-navigator/issues/12).
+* Added a new "super compact" view option, which removes all technique text in order to fit as much content on the screen as possible. See issue [#11](https://github.com/mitre-attack/attack-navigator/issues/11).
+
+### Improvements
+
+* Depreciated and revoked objects in the STIX content are no longer displayed in the Navigator. See issue [#30](https://github.com/mitre-attack/attack-navigator/issues/30).
+* Uploading a layer with of a different version number than expected warns the user that some annotations or configurations may not be restored. See issue [#27](https://github.com/mitre-attack/attack-navigator/issues/27).
+* A dockerfile was added to the repo, and documentation on using the Navigator with Docker was added to the readme. See issue [#15](https://github.com/mitre-attack/attack-navigator/issues/15).
+* CTRL (windows) and CMD (mac) can now be used to select multiple techniques in addition to shift (both platforms). See issue [#18](https://github.com/mitre-attack/attack-navigator/issues/18).
+* Gradient colors are now fully customizable, using a color picker instead of a dropdown menu.
+
+### Fixes
+
+* Tooltips resize to fit long comments. If the comment exceeds a certain length the overflow is cut and denoted by ellipses (...). See issue [#23](https://github.com/mitre-attack/attack-navigator/issues/23).
+* Tooltips, dropdown menus and context menus now align themselves automatically to avoid going off the edge of the page.
+* Tab performance is now more independent of the number and content of other tabs.
+* Uploaded layer files now typecheck their fields to make sure everything is formatted properly. Fields which do not meet the layer format specification are set to their default value.
+
+### Layer File Format Changes
+
+Layer file format updated to version 2.0. Older layer versions can still be loaded by the Navigator, however some fields may no longer be supported. See [layers/LAYERFORMATv2.md](layers/LAYERFORMATv2.md) for the full v2.0 specification.
+
+* Replaced the `viewFullTable` field (boolean) with the `viewMode` field (number) in order to support the "super compact" view option. See issue [#11](https://github.com/mitre-attack/attack-navigator/issues/11).
+  * If `viewFullTable` is present in a layer file uploaded to the v2.0 Navigator it will be ignored.
+  * To upgrade a layer without losing the view mode, see the following mappings:
+    * `viewFullTable: true` becomes `viewMode: 0`.
+    * `viewFullTable: false` becomes `viewMode: 1`.
+* Added `legendItems` field, an array of legendItem objects (also specified in document). This field can be used to specify the contents of the legend. See issue [#24](https://github.com/mitre-attack/attack-navigator/issues/24).
+* Added `showTacticRowBackground` field (boolean), which if true sets the layer to display a background color for the tactic row. See issue [#32](https://github.com/mitre-attack/attack-navigator/issues/32).
+* Added `tacticRowBackground` field (string), which holds the hex color value to show as the background to the tactic row if `showTacticRowBackground` is true. See issue [#32](https://github.com/mitre-attack/attack-navigator/issues/32).
+* Added `selectTechniquesAcrossTactics` field (boolean), which if false allows the user to select instances of techniques which are found in multiple tactics individually. See issue [#8](https://github.com/mitre-attack/attack-navigator/issues/8).
+* Added `tactic` field (string) to the Technique object. If this field is present, the annotations will only be applied to the instance of the technique in the specified tactic. If this field is not present, the annotations will be applied to all instances of the technique. See issue [#8](https://github.com/mitre-attack/attack-navigator/issues/8).
