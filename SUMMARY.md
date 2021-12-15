@@ -1,3 +1,3 @@
 # Table of contents
 
-* [🍏 MITRE\_Att\&ck\_Navigator](README.md)
+* [😀 MITRE\_Att\&ck\_Navigator](README.md)

@@ -2,7 +2,7 @@
 description: Att&CK威胁工具
 ---
 
-# 🍏 MITRE\_Att\&ck\_Navigator
+# 😀 MITRE\_Att\&ck\_Navigator
 
 ### ATT\&CK® Navigator
 
@@ -65,7 +65,9 @@ ATT\&CK Navigator 4.0 版在应用程序的单个实例中支持所有 ATT\&CK �
 
 #### 编译在别处使用
 
-1. Run `ng build` within the **nav-app** directory
+#### 编译在别处使用
+
+1. 在 nav-app 目录中运行 ng build
 2. Copy files from `nav-app/dist/` directory
 
 _Note: `ng build --prod` does not currently work for ATT\&CK Navigator without additional flags. To build the production environment instead use `ng build --prod --aot=false --build-optimizer=false`._
