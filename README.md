@@ -8,9 +8,9 @@
 
 * 允许在 SVG 导出器的图例块中分别隐藏图例和渐变。查看拉取请求 [#223](https://github.com/mitre-attack/attack-navigator/pull/223).
 
-### Fixes
+### 修复
 
-* SVG exporter now honors layer sorting configuration. See pull request [#223](https://github.com/mitre-attack/attack-navigator/pull/223).
+* SSVG 导出器现在支持图层排序配置。查看拉取请求 [#223](https://github.com/mitre-attack/attack-navigator/pull/223).
 
 ## v3.1 - 8 July 2020
 
