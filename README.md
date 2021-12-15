@@ -33,12 +33,12 @@ ATT\&CK Navigator 4.0 版在应用程序的单个实例中支持所有 ATT\&CK �
 
 有关为 ATT\&CK 导航器做出贡献的更多信息，请参阅 CONTRIBUTING.md。
 
-### Requirements
+### 要求
 
 * [Node.js](https://nodejs.org) version 8 or greater
 * [AngularCLI](https://cli.angular.io)
 
-### Supported Browsers
+### 支持的浏览器
 
 * Chrome
 * Firefox
@@ -47,9 +47,9 @@ ATT\&CK Navigator 4.0 版在应用程序的单个实例中支持所有 ATT\&CK �
 * Opera
 * Safari \[2]
 
-**\[1]** There is a recorded issue with the SVG export feature on Internet Explorer. Because of a [missing functionality on SVGElements](https://developer.mozilla.org/en-US/docs/Web/API/ParentNode/children) in that browser, text will not be properly vertically centered in SVGs exported in that browser. We recommend switching to a more modern browser for optimal results.
+**\[1]** Internet Explorer 上的 SVG 导出功能存在记录问题。由于该浏览器中缺少 SVGElements 的功能，文本将无法在该浏览器中导出的 SVG 中正确垂直居中。我们建议切换到更现代的浏览器以获得最佳结果。
 
-**\[2]** ATT\&CK Navigator only supports Safari versions 14 and above because older versions of the browser can exhibit an unfixable freeze when selecting a layer tab. Users on unsupported versions of the browser will be warned of this possibility when opening the application.
+**\[2]** ATT\&CK Navigator 仅支持 Safari 版本 14 及更高版本，因为旧版本的浏览器在选择图层选项卡时可能会出现无法修复的冻结。使用不受支持的浏览器版本的用户将在打开应用程序时收到这种可能性的警告。
 
 ### Install and Run
 
