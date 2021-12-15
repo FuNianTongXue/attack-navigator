@@ -58,10 +58,10 @@ ATT\&CK Navigator 4.0 版在应用程序的单个实例中支持所有 ATT\&CK �
 1. 导航到 nav-app 目录
 2. Run `npm install`
 
-**Serve application on local machine**
+在本地机器上服务应用程序
 
-1. Run `ng serve` within the **nav-app** directory
-2. Navigate to `localhost:4200` in browser
+1. 启动 `ng serve` 在 nav-app 目录中
+2. 在浏览器中导航到 localhost:4200
 
 **Compile for use elsewhere**
 
