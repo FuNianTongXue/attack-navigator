@@ -72,10 +72,10 @@ ATT\&CK Navigator 4.0 版在应用程序的单个实例中支持所有 ATT\&CK �
 
 注意： ng build --prod 目前不适用于没有附加标志的 ATT\&CK Navigator。要构建生产环境，请改用 ng build --prod --aot=false --build-optimizer=false。
 
-**Running the Navigator offline**
+#### 离线运行导航器
 
-1. Install the Navigator as per instructions above.
-2. Follow instructions under [loading content from local files](broken-reference) to configure the Navigator to populate the matrix without an internet connection. For enterprise-attack, use [this file](https://raw.githubusercontent.com/mitre/cti/master/enterprise-attack/enterprise-attack.json). For mobile-attack, use [this file](https://raw.githubusercontent.com/mitre/cti/master/mobile-attack/mobile-attack.json). For pre-attack, use [this file](https://raw.githubusercontent.com/mitre/cti/master/pre-attack/pre-attack.json).
+1. 按照上述说明安装导航器。
+2. 按照从本地文件加载内容下的说明配置导航器以在没有 Internet 连接的情况下填充矩阵。对于企业攻击，请使用此文件。对于移动攻击，请使用此文件。对于预攻击，请使用此文件。
 
 **Common issues**
 
