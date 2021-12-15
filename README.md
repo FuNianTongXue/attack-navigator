@@ -63,7 +63,7 @@ ATT\&CK Navigator 4.0 版在应用程序的单个实例中支持所有 ATT\&CK �
 1. 启动 `ng serve` 在 nav-app 目录中
 2. 在浏览器中导航到 localhost:4200
 
-**Compile for use elsewhere**
+#### 编译在别处使用
 
 1. Run `ng build` within the **nav-app** directory
 2. Copy files from `nav-app/dist/` directory
