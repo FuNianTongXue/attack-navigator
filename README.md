@@ -77,51 +77,49 @@ ATT\&CK Navigator 4.0 版在应用程序的单个实例中支持所有 ATT\&CK �
 1. 按照上述说明安装导航器。
 2. 按照从本地文件加载内容下的说明配置导航器以在没有 Internet 连接的情况下填充矩阵。对于企业攻击，请使用此文件。对于移动攻击，请使用此文件。对于预攻击，请使用此文件。
 
-**Common issues**
+常见问题
 
-1. If serving or compiling the application gives the warning `Module not found: can't resolve 'fs'`, run the command `npm run postinstall`. The postinstall step usually runs automatically after `npm install` to patch the `fs` issue, but in some environments it must be run manually.
+1. 如果服务或编译应用程序给出警告模块未找到：无法解析 'fs'，请运行命令 npm run postinstall。 postinstall 步骤通常在 npm install 之后自动运行以修补 fs 问题，但在某些环境中它必须手动运行。
 
-### Documentation
+### 文档
 
-When viewing the app in a browser, click on the **?** icon to the right of the **ATT\&CK® Navigator** title to view its documentation.
+在浏览器中查看应用程序时，单击 ? ATT\&CK® Navigator 标题右侧的图标以查看其文档。
 
-### Layers Folder
+### 图层文件夹
 
-The **layers** folder contains specifications for the layer format as well as example layers and a script demonstrating programatic layer generation. We will continue to add content to this repository as new scripts are implemented. Also, feel free to create pull requests if you want to add new capabilities here!
+图层文件夹包含图层格式的规范以及示例图层和演示程序图层生成的脚本。随着新脚本的实施，我们将继续向此存储库添加内容。此外，如果您想在此处添加新功能，请随时创建拉取请求！
 
-More information on how layers are used and developed can be found in the ATT\&CK Navigator documentation that can be viewed by clicking **?** when running the app in a browser, and in the README in the **layers** folder.
+可以在 ATT\&CK Navigator 文档中找到有关如何使用和开发图层的更多信息，单击 ?在浏览器中和图层文件夹中的自述文件中运行应用程序时。
 
-### Adding Custom Context Menu Options
+### 添加自定义上下文菜单选项
 
-To create custom options to the **ATT\&CK® Navigator** context menu using data in the Navigator, objects must be added to the array labeled `custom_context_menu_options` in `nav-app/src/assets/config.json`. Each object must have a property **label**, which is the text displayed in the context menu, and a property **url**, which is where the user is navigated.
+要使用导航器中的数据为 ATT\&CK® 导航器上下文菜单创建自定义选项，必须将对象添加到 nav-app/src/assets/config.json 中标记为 custom\_context\_menu\_options 的数组中。每个对象都必须有一个属性标签，即上下文菜单中显示的文本，以及一个属性 url，即用户导航到的位置。
 
-To utilize data on right-clicked technique in the url, parameters surrounded by double curly brackets can be added to the string. For example: using `http://www.someurl.com/{{technique_attackID}}}` as the url in the custom option would lead to `http://www.someurl.com/T1098`, if the right-clicked technique's attackID was T1098.
+要在 url 中使用有关右键单击技术的数据，可以将双大括号包围的参数添加到字符串中。例如：使用`http://www.someurl.com/{{technique_attackID}}}` 因为自定义选项中的网址会导致 `http://www.someurl.com/T1098`, 如果右键单击的技术的attackID 是T1098。将解析以下数据替换:
 
-The following data substitutions will be parsed:
+* `{{technique_attackID}}` 将替换为技术的 ATT\&CK ID，例如 `T1234`
+* `{{technique_stixID}}` 将替换为该技术的 STIX ID，例如 `attack-pattern--12345678-1234-1234-1234-123456789123`
+* `{{technique_name}}` 将用小写的技术名称替换，并用连字符替换空格，例如 `example-technique-name`
+* `{{tactic_attackID}}` 将替换为策略的 ATT\&CK ID，例如 `TA1234`
+* `{{tactic_stixID}}` 将替换为战术的 STIX ID，例如 `x-mitre-tactic--12345678-1234-1234-1234-123456789123`
+* `{{tactic_name}}` 将替换为小写的战术名称，空格替换为连字符，例如`example-tactic`. 这也等效于策略的 x\_mitre\_shortname 属性。
 
-* `{{technique_attackID}}` will be substituted with the ATT\&CK ID of the technique, e.g `T1234`
-* `{{technique_stixID}}` will be substituted with the STIX ID of the technique, e.g `attack-pattern--12345678-1234-1234-1234-123456789123`
-* `{{technique_name}}` will be substituted with the technique name in lower case and with spaces replaced with hyphens, e.g `example-technique-name`
-* `{{tactic_attackID}}` will be substituted with the ATT\&CK ID of the tactic, e.g `TA1234`
-* `{{tactic_stixID}}` will be substituted with the STIX ID of the tactic, e.g `x-mitre-tactic--12345678-1234-1234-1234-123456789123`
-* `{{tactic_name}}` will be substituted with the tactic name in lower case and with spaces replaced with hyphens, e.g `example-tactic`. This is also equivalent to the x\_mitre\_shortname property of the tactic.
+可选地，可以将 subtechnique\_url 字段添加到自定义选项中。当该选项用于子技术而不是用于技术的普通 URL 时，将解析此字段。如果未使用 subtechnique\_url，则上面定义的 technology\_ 替换将引用子技术对象本身。
 
-Optionally, a `subtechnique_url` field may be added to a custom option. This field will be parsed when the option is used on a sub-technique instead of the normal URL, which will be used for techniques. If `subtechnique_url` is not used, the `technique_` substitutions defined above will refer to the sub-technique object itself.
+将为子技术解析以下替换：
 
-The following substitutions will be parsed for sub-techniques:
+* `{{parent_technique_attackID}}` 将替换为子技术的父级的 ATT\&CK ID，例如 `T1234`
+* `{{parent_technique_stixID}}` 将替换为子技术的父级的 STIX ID，例如 `attack-pattern--12345678-1234-1234-1234-123456789123`
+* `{{parent_technique_name}}` 将被替换为小写的子技术的父级名称，并用连字符替换空格，例如 `example-technique-name`
+* `{{subtechnique_attackID}}` 将替换为子技术的 ATT\&CK ID，例如`T1234.001`
+* `{{subtechnique_attackID_suffix}}` 将在定界期后替换为子技术的ATT\&CK ID部分，例如 `001`
+* `{{subtechnique_stixID}}` 将替换为子技术的 STIX ID，例如 `attack-pattern--98765432-9876-9876-9876-987654321987`
+* `{{subtechnique_name}}` 将替换为小写的子技术名称，并用连字符替换空格，例如 `example-subtechnique-name`
+* `{{tactic_attackID}}`将替换为策略的 ATT\&CK ID，例如 `TA1234`
+* `{{tactic_stixID}}`将替换为战术的 STIX ID，例如 `x-mitre-tactic--12345678-1234-1234-1234-123456789123`
+* `{{tactic_name}}` 将替换为小写的战术名称，空格替换为连字符，例如 `example-tactic`. 这也相当于战术的 x\_mitre\_shortname 属性.
 
-* `{{parent_technique_attackID}}` will be substituted with the ATT\&CK ID of the sub-technique's parent, e.g `T1234`
-* `{{parent_technique_stixID}}` will be substituted with the STIX ID of the sub-technique's parent, e.g `attack-pattern--12345678-1234-1234-1234-123456789123`
-* `{{parent_technique_name}}` will be substituted with the name of the sub-technique's parent in lower case and with spaces replaced with hyphens, e.g `example-technique-name`
-* `{{subtechnique_attackID}}` will be substituted with the ATT\&CK ID of the sub-technique, e.g `T1234.001`
-* `{{subtechnique_attackID_suffix}}` will be substituted with the portion of the ATT\&CK ID of the sub-technique after the delimiting period, e.g `001`
-* `{{subtechnique_stixID}}` will be substituted with the STIX ID of the sub-technique, e.g `attack-pattern--98765432-9876-9876-9876-987654321987`
-* `{{subtechnique_name}}` will be substituted with the sub-technique name in lower case and with spaces replaced with hyphens, e.g `example-subtechnique-name`
-* `{{tactic_attackID}}` will be substituted with the ATT\&CK ID of the tactic, e.g `TA1234`
-* `{{tactic_stixID}}` will be substituted with the STIX ID of the tactic, e.g `x-mitre-tactic--12345678-1234-1234-1234-123456789123`
-* `{{tactic_name}}` will be substituted with the tactic name in lower case and with spaces replaced with hyphens, e.g `example-tactic`. This is also equivalent to the x\_mitre\_shortname property of the tactic.
-
-Example custom context menu objects:
+示例自定义上下文菜单对象:
 
 ```
 {
@@ -138,15 +136,15 @@ Example custom context menu objects:
 }
 ```
 
-### Loading content from a TAXII server
+### 从 TAXII 服务器加载内容
 
-_By default, the Navigator loads content from ATT\&CK STIX data hosted on the_ [_MITRE/CTI repository_](broken-reference)_. Note: TAXII 2.1/STIX 2.1 bundles are **not** supported when loading content from a TAXII server._
+默认情况下，导航器从托管在 MITRE/CTI 存储库上的 ATT\&CK STIX 数据加载内容。注意：从 TAXII 服务器加载内容时不支持 TAXII 2.1/STIX 2.1 包。
 
-1. Edit the `config.json` file in the **nav-app/src/assets** directory.
-2. Define the `taxii_url` property in place of the `data` property and set the value to your server's URL.
-3. Define the `taxii_collection` property and set the value to the collection UUIDs your TAXII server has set.
+1. 编辑 nav-app/src/assets 目录中的 config.json 文件。
+2. 定义taxii\_url 属性代替data 属性并将值设置为您的服务器的URL。
+3. 定义taxii\_collection 属性并将值设置为TAXII 服务器设置的集合UUID。
 
-Example loading content from a TAXII server:
+从 TAXII 服务器加载内容的示例:
 
 ```
 "domains": [
@@ -158,15 +156,15 @@ Example loading content from a TAXII server:
 ]
 ```
 
-### Loading content from local files
+### 从本地文件加载内容
 
-_It's possible to populate the the Navigator using files that consist of bundles of STIX objects, similarly to_ [_this_](https://raw.githubusercontent.com/mitre/cti/master/enterprise-attack/enterprise-attack.json) _file. STIX 2.0 and STIX 2.1 bundles are supported._
+可以使用由 STIX 对象包组成的文件来填充导航器，类似于此文件。支持 STIX 2.0 和 STIX 2.1 包_._
 
-1. Put the stix bundles in `src/assets`. This will tell the server hosting the Navigator to host the data as well.
-2. Edit the `config.json` file in the **nav-app/src/assets** directory.
-3. Change the URL specified in the `data` array to the path to the STIX bundle (e.g `assets/enterprise-attack.json`). Multiple paths may be added to the `data` array to display multiple STIX bundles in a single instance.
+1. 将 stix 包放在 src/assets 中。这将告诉托管导航器的服务器也托管数据
+2. 编辑 nav-app/src/assets 目录中的 config.json 文件。
+3. 将数据数组中指定的 URL 更改为 STIX 包的路径（例如 assets/enterprise-attack.json）。可以将多个路径添加到数据数组中以在单个实例中显示多个 STIX 包。
 
-Example loading content from local files:
+从本地文件加载内容的示例:
 
 ```
 "domains": [
@@ -177,16 +175,16 @@ Example loading content from local files:
 ]
 ```
 
-### Running the Docker File
+### 运行 Docker 文件
 
-1. Navigate to the **nav-app** directory
+1. 导航到 nav-app 目录
 2. Run `docker build -t yourcustomname .`
 3. Run `docker run -p 4200:4200 yourcustomname`
-4. Navigate to `localhost:4200` in browser
+4. 在浏览器中导航到 localhost:4200
 
-### Loading Default Layers Upon Initialization
+### 初始化时加载默认图层
 
-The Navigator can be configured so as to load a set of layers upon initialization. These layers can be from the web and/or from local files. Local files to load should be placed in the `nav-app/src/assets/` directory.
+导航器可以配置为在初始化时加载一组层。这些层可以来自网络和/或来自本地文件。要加载的本地文件应放在 nav-app/src/assets/ 目录中。
 
 1. Set the `enabled` property in `default_layers` in `src/assets/config.json` to `true`
 2.  Add the paths to your desired default layers to the `urls` array in `default_layers`. For example,
