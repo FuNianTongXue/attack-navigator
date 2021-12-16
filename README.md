@@ -186,8 +186,8 @@ ATT\&CK Navigator 4.0 版在应用程序的单个实例中支持所有 ATT\&CK �
 
 导航器可以配置为在初始化时加载一组层。这些层可以来自网络和/或来自本地文件。要加载的本地文件应放在 nav-app/src/assets/ 目录中。
 
-1. Set the `enabled` property in `default_layers` in `src/assets/config.json` to `true`
-2.  Add the paths to your desired default layers to the `urls` array in `default_layers`. For example,
+1. 将 src/assets/config.json 中 default\_layers 中的 enabled 属性设置为 true
+2.  将所需默认图层的路径添加到 default\_layers 中的 urls 数组。例如,
 
     ```
     "default_layers": {
@@ -199,8 +199,8 @@ ATT\&CK Navigator 4.0 版在应用程序的单个实例中支持所有 ATT\&CK �
      }
     ```
 
-    would load `example.json` from the local assets directory, and `Bear_APT.json` from this repo's sample layer folder on Github.
-3. Load/reload the Navigator
+    将从本地资产目录加载 example.json，并从 Github 上此 repo 的示例层文件夹加载 Bear\_APT.json.
+3. 加载/重新加载导航器
 
 Default layers from the web can also be set using a query string in the Navigator URL. Refer to the in-application help page section "Customizing the Navigator" for more details.
 
