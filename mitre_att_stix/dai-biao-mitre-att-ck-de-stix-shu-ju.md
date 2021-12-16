@@ -1,10 +1,10 @@
 # 😃 代表 MITRE ATT & CK 的 STIX 数据
 
-### ATT\&CK® STIX Data
+### ATT & CK® STIX 数据
 
-[MITRE ATT\&CK](https://attack.mitre.org) is a globally-accessible knowledge base of adversary tactics and techniques based on real-world observations. The ATT\&CK knowledge base is used as a foundation for the development of specific threat models and methodologies in the private sector, in government, and in the cybersecurity product and service community.
+[MITRE ATT\&CK](https://attack.mitre.org) 是基于现实世界观察的全球可访问的对手战术和技术知识库。 ATT\&CK 知识库被用作在私营部门、政府以及网络安全产品和服务社区中开发特定威胁模型和方法的基础.
 
-This repository contains the MITRE ATT\&CK dataset represented in STIX 2.1 JSON collections. If you are looking for STIX 2.0 JSON representing ATT\&CK, please see our [MITRE/CTI](https://github.com/mitre/cti) GitHub repository which contains the same dataset but in STIX 2.0 and without the collections features provided on this repository.
+该存储库包含以 STIX 2.1 JSON 集合表示的 MITRE ATT\&CK 数据集。如果您正在寻找代表 ATT\&CK 的 STIX 2.0 JSON，请参阅我们的 [MITRE/CTI](https://github.com/mitre/cti) GitHub 存储库包含相同的数据集，但在 STIX 2.0 中，并且没有此存储库提供的集合功能。
 
 ### Repository Structure
 

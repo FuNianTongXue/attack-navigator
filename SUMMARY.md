@@ -2,7 +2,7 @@
 
 * [😀 MITRE\_Att\&ck\_Navigator](README.md)
 * [😃 MITRE\_ATT\_STIX](mitre\_att\_stix/README.md)
-  * [STIX data representing MITRE ATT\&CK](mitre\_att\_stix/stix-data-representing-mitre-att-and-ck.md)
+  * [😃 代表 MITRE ATT & CK 的 STIX 数据](mitre\_att\_stix/dai-biao-mitre-att-ck-de-stix-shu-ju.md)
   * [Forks](mitre\_att\_stix/forks.md)
   * [Stargazers](mitre\_att\_stix/stargazers.md)
   * [attack-stix-data/index.md at master](mitre\_att\_stix/attack-stix-data-index.md-at-master.md)
@@ -14,7 +14,7 @@
   * [Projects](mitre\_att\_stix/projects.md)
   * [Pulse](mitre\_att\_stix/pulse.md)
   * [Branches](mitre\_att\_stix/branches.md)
-  * [😃 代表 MITRE ATT & CK 的 STIX 数据](mitre\_att\_stix/dai-biao-mitre-att-ck-de-stix-shu-ju.md)
+  * [😃 代表 MITRE ATT & CK 的 STIX 数据](mitre\_att\_stix/dai-biao-mitre-att-ck-de-stix-shu-ju-1.md)
   * [Releases](mitre\_att\_stix/releases.md)
   * [Build software better, together](mitre\_att\_stix/build-software-better-together-1.md)
   * [attack-stix-data/enterprise-attack at master](mitre\_att\_stix/attack-stix-data-enterprise-attack-at-master.md)

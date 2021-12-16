@@ -1,4 +1,4 @@
-# STIX data representing MITRE ATT\&CK
+# 😃 代表 MITRE ATT & CK 的 STIX 数据
 
 ### ATT\&CK® STIX Data
 
