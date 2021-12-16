@@ -202,13 +202,13 @@ ATT\&CK Navigator 4.0 版在应用程序的单个实例中支持所有 ATT\&CK �
     将从本地资产目录加载 example.json，并从 Github 上此 repo 的示例层文件夹加载 Bear\_APT.json.
 3. 加载/重新加载导航器
 
-Default layers from the web can also be set using a query string in the Navigator URL. Refer to the in-application help page section "Customizing the Navigator" for more details.
+还可以使用导航器 URL 中的查询字符串设置来自 Web 的默认图层。有关更多详细信息，请参阅应用程序内帮助页面部分“自定义导航器”。
 
-Users will not be prompted to upgrade default layers to the current version of ATT\&CK if they are outdated.
+如果默认层已过时，则不会提示用户将默认层升级到当前版本的 ATT\&CK。
 
-### Enabling Banner in Navigator
+### 在导航器中启用横幅
 
-The `banner` setting in `nav-app/src/assets/config.json` by default is an empty string `"""` (and not visible), and can be set to whatever content you wish to display inside a banner at the top of the Navigator webpage. The banner supports HTML and hyperlinks in the content.
+默认情况下，nav-app/src/assets/config.json 中的横幅设置是一个空字符串 """（并且不可见），并且可以设置为您希望在导航器顶部横幅内显示的任何内容网页。横幅在内容中支持 HTML 和超链接。
 
 ### Disabling Navigator Features
 
