@@ -22,9 +22,9 @@
 └─ index.md ∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙∙ [5] Collection index markdown
 ```
 
-**\[1]** Each domain of ATT\&CK (Enterprise, Mobile and ICS) is represented as a series of STIX 2.1 [collection](https://github.com/center-for-threat-informed-defense/attack-workbench-frontend/blob/master/docs/collections.md#collections) bundles representing the individual releases of the dataset, organized within the collection folders.
+**\[1]** ATT\&CK 的每个域（企业、移动和 ICS）都表示为一系列 STIX 2.1 集合包，代表数据集的各个版本，在集合文件夹中组织。
 
-**\[2]** Each domain includes a STIX 2.1 collection bundle without version markings which will always match the most recent release of the dataset.
+**\[2]** 每个域都包含一个没有版本标记的 STIX 2.1 集合包，它始终与数据集的最新版本相匹配。
 
 **\[3]** Each STIX bundle in the collection folders represents a specific release of the collection. Learn more in our [collections](https://github.com/center-for-threat-informed-defense/attack-workbench-frontend/blob/master/docs/collections.md#collections) document.
 
