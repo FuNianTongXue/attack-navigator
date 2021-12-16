@@ -234,40 +234,36 @@ nav-app/src/assets/config.json 中的 features 数组列出了您可能想要禁
 <iframe src="https://mitre-attack.github.io/attack-navigator/enterprise/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fmitre%2Fattack-navigator%2Fmaster%2Flayers%2Fdata%2Fsamples%2FBear_APT.json&tabs=false&selecting_techniques=false" width="1000" height="500"></iframe>
 ```
 
-### Related MITRE Work
+### 相关的 MITRE 工作
 
 **CTI**
 
-[Cyber Threat Intelligence repository](https://github.com/mitre/cti) of the ATT\&CK catalog expressed in STIX 2.0 JSON.
+ATT\&CK 目录的网络威胁情报存储库，以 STIX 2.0 JSON 表示.
 
 **ATT\&CK**
 
-ATT\&CK® is a curated knowledge base and model for cyber adversary behavior, reflecting the various phases of an adversary’s lifecycle and the platforms they are known to target. ATT\&CK is useful for understanding security risk against known adversary behavior, for planning security improvements, and verifying defenses work as expected.
+ATT\&CK® 是网络对手行为的策划知识库和模型，反映了对手生命周期的各个阶段以及他们已知的目标平台。 ATT\&CK 可用于了解针对已知对手行为的安全风险、规划安全改进以及验证防御是否按预期工作.
 
 [https://attack.mitre.org](https://attack.mitre.org)
 
 **STIX**
 
-Structured Threat Information Expression (STIX™) is a language and serialization format used to exchange cyber threat intelligence (CTI).
+结构化威胁信息表达式 (STIX™) 是一种用于交换网络威胁情报 (CTI) 的语言和序列化格式.
 
-STIX enables organizations to share CTI with one another in a consistent and machine readable manner, allowing security communities to better understand what computer-based attacks they are most likely to see and to anticipate and/or respond to those attacks faster and more effectively.
+STIX 使组织能够以一致和机器可读的方式相互共享 CTI，使安全社区能够更好地了解他们最有可能看到哪些基于计算机的攻击，并更快、更有效地预测和/或响应这些攻击.
 
-STIX is designed to improve many different capabilities, such as collaborative threat analysis, automated threat exchange, automated detection and response, and more.
+STIX 旨在改进许多不同的功能，例如协作威胁分析、自动威胁交换、自动检测和响应等.
 
 [https://oasis-open.github.io/cti-documentation/](https://oasis-open.github.io/cti-documentation/)
 
-### Notice
+### 注意
 
-Copyright 2020 The MITRE Corporation
-
-Approved for Public Release; Distribution Unlimited. Case Number 18-0128.
-
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
+版权所有 2020 MITRE 公司已获准公开发行；分发无限。案件编号 18-0128。根据 Apache 许可，版本 2.0（“许可”）获得许可；除非遵守许可，否则您不得使用此文件。您可以在以下网址获得许可证的副本
 
 [http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
 
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.
+除非适用法律要求或书面同意，否则根据许可分发的软件是按“原样”分发的，没有任何类型的明示或暗示的保证或条件。请参阅许可证以了解许可证下管理权限和限制的特定语言.
 
-This project makes use of ATT\&CK®
+这个项目使用了ATT\&CK®
 
 [ATT\&CK® Terms of Use](https://attack.mitre.org/resources/terms-of-use/)
