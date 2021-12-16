@@ -210,25 +210,25 @@ ATT\&CK Navigator 4.0 版在应用程序的单个实例中支持所有 ATT\&CK �
 
 默认情况下，nav-app/src/assets/config.json 中的横幅设置是一个空字符串 """（并且不可见），并且可以设置为您希望在导航器顶部横幅内显示的任何内容网页。横幅在内容中支持 HTML 和超链接。
 
-### Disabling Navigator Features
+### 禁用导航器功能
 
-The `features` array in `nav-app/src/assets/config.json` lists Navigator features you may want to disable. Setting the `enabled` field on a feature in the configuration file will hide all control elements related to that feature.
+nav-app/src/assets/config.json 中的 features 数组列出了您可能想要禁用的 Navigator 功能。在配置文件中的某个功能上设置启用字段将隐藏与该功能相关的所有控制元素。
 
-However, if a layer is uploaded with an annotation or configuration relating to that feature it will not be hidden. For example, if `comments` are disabled the ability to add a new comment annotation will be removed, however if a layer is uploaded with comments present they will still be displayed in tooltips and and marked with an underline.
+但是，如果上传的图层带有与该要素相关的注释或配置，则该图层不会被隐藏。例如，如果评论被禁用，添加新评论注释的功能将被删除，但是如果上传的图层带有评论，它们仍将显示在工具提示中并用下划线标记。
 
-Features can also be disabled using the _create customized Navigator_ feature. Refer to the in-application help page section "Customizing the Navigator" for more details.
+也可以使用创建自定义导航器功能禁用功能。有关更多详细信息，请参阅应用程序内帮助页面部分“自定义导航器”。
 
-### Embedding the Navigator in a Webpage
+### 在网页中嵌入导航器
 
-If you want to embed the Navigator in a webpage, use an iframe:
+如果要在网页中嵌入导航器，请使用 iframe:
 
 ```
 <iframe src="https://mitre-attack.github.io/attack-navigator/enterprise/" width="1000" height="500"></iframe>
 ```
 
-If you want to embed a version of the Navigator with specific features removed (e.g tabs, adding annotations), or with a default layer, we recommend using the _create customized Navigator_ feature. We highly recommend disabling the "leave site dialog" via this means when embedding the Navigator since otherwise you will be warned whenever you try to leave the embedding page. Refer to the in-application help page section "Customizing the Navigator" for more details.
+如果您想要嵌入已删除特定功能（例如选项卡、添加注释）或带有默认图层的导航器版本，我们建议使用创建自定义导航器功能。我们强烈建议在嵌入导航器时通过这种方式禁用“离开站点对话框”，否则每当您尝试离开嵌入页面时都会收到警告。有关更多详细信息，请参阅应用程序内帮助页面部分“自定义导航器”.
 
-The following is an example iframe which embeds our \*Bear APTs layer with tabs and the ability to add annotations removed:
+以下是一个示例 iframe，它嵌入了我们的 \*Bear APTs 层，带有选项卡，并删除了添加注释的功能:
 
 ```
 <iframe src="https://mitre-attack.github.io/attack-navigator/enterprise/#layerURL=https%3A%2F%2Fraw.githubusercontent.com%2Fmitre%2Fattack-navigator%2Fmaster%2Flayers%2Fdata%2Fsamples%2FBear_APT.json&tabs=false&selecting_techniques=false" width="1000" height="500"></iframe>
