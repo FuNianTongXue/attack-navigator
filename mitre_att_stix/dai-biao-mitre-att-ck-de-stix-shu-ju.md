@@ -26,9 +26,9 @@
 
 **\[2]** 每个域都包含一个没有版本标记的 STIX 2.1 集合包，它始终与数据集的最新版本相匹配。
 
-**\[3]** Each STIX bundle in the collection folders represents a specific release of the collection. Learn more in our [collections](https://github.com/center-for-threat-informed-defense/attack-workbench-frontend/blob/master/docs/collections.md#collections) document.
+**\[3]** 集合文件夹中的每个 STIX 包都代表集合的一个特定版本。在我们的了解更多 [collections](https://github.com/center-for-threat-informed-defense/attack-workbench-frontend/blob/master/docs/collections.md#collections) 文档.
 
-**\[4]** The [collection index JSON](https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/index.json) lists the contents of this repository in a machine-readable format. Learn more in our [collections](https://github.com/center-for-threat-informed-defense/attack-workbench-frontend/blob/master/docs/collections.md#collection-indexes) document.
+**\[4]** 这 [collection index JSON](https://raw.githubusercontent.com/mitre-attack/attack-stix-data/master/index.json) 以机器可读的格式列出此存储库的内容。在我们的了解更多 [collections](https://github.com/center-for-threat-informed-defense/attack-workbench-frontend/blob/master/docs/collections.md#collection-indexes) 文档.
 
 **\[5]** The [collection index markdown](broken-reference) lists the contents of this repository in a human-readable format.
 
