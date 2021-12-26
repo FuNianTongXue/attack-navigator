@@ -32,13 +32,13 @@
 
 **\[5]** The [collection index markdown](broken-reference) lists the contents of this repository in a human-readable format.
 
-### Supporting Documentation
+### 支持文档
 
 #### [STIX](https://oasis-open.github.io/cti-documentation/)
 
-Structured Threat Information Expression (STIX™) is a language and serialization format used to exchange cyber threat intelligence (CTI).
+结构化威胁信息表达式 (STIX™) 是一种用于交换网络威胁情报 (CTI) 的语言和序列化格式。
 
-STIX enables organizations to share CTI with one another in a consistent and machine readable manner, allowing security communities to better understand what computer-based attacks they are most likely to see and to anticipate and/or respond to those attacks faster and more effectively.
+STIX 使组织能够以一致和机器可读的方式相互共享 CTI，使安全社区能够更好地了解他们最有可能看到哪些基于计算机的攻击，并更快、更有效地预测和/或响应这些攻击。
 
 STIX is designed to improve many different capabilities, such as collaborative threat analysis, automated threat exchange, automated detection and response, and more.
 
