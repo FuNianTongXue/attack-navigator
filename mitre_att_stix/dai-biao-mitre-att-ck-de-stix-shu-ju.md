@@ -6,7 +6,7 @@
 
 该存储库包含以 STIX 2.1 JSON 集合表示的 MITRE ATT\&CK 数据集。如果您正在寻找代表 ATT\&CK 的 STIX 2.0 JSON，请参阅我们的 [MITRE/CTI](https://github.com/mitre/cti) GitHub 存储库包含相同的数据集，但在 STIX 2.0 中，并且没有此存储库提供的集合功能。
 
-### Repository Structure
+### 存储库结构
 
 ```
 .
